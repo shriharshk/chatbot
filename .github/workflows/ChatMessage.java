@@ -1,3 +1,5 @@
+package com.example.chatbot;
+
 public class ChatMessage {
     private String message;
     private boolean isUser; // true if message sent by user
