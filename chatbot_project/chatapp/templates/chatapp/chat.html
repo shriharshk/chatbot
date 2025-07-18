@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <style>
+        .chat-box { max-width: 600px; margin: 0 auto; }
+        .message { padding: 5px 10px; margin: 5px; }
+        .user { text-align: right; background-color: #e0f7fa; }
+        .bot { text-align: left; background-color: #f1f8e9; }
+    </style>
+</head>
+<body>
+<div class="chat-box">
+    {% for msg in messages %}
+        <div class="message {{ 'user' if msg.is_user else 'bot' }}">
+            {{ msg.text }}
+        </div>
+    {% endfor %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button>
+    </form>
+</div>
+<h3>Sample Questions</h3>
+<ul>
+    {% for q in questions %}
+    <li>{{ q }}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
